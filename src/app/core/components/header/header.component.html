@@ -1,1 +1,43 @@
-<p>header works!</p>
+<section class="header">
+  <div class="header-wrapper">
+    <a routerLink="/main">
+      <img
+        ngSrc="./assets/images/logo.png"
+        width="100"
+        height="100"
+        priority
+        class="header__logo"
+      />
+    </a>
+    <button
+      tuiIconButton
+      icon="tuiIconSettingsLarge"
+      type="button"
+      size="l"
+      appearance="secondary-destructive"
+      class="header-setting"
+      [tuiDropdown]="dropdownContent"
+      [tuiDropdownManual]="open"
+      (click)="settingsOnClick()"
+      (tuiActiveZoneChange)="onActiveZone($event)"
+    ></button>
+    <ng-template #dropdownContent tuiDropdownAlign="right" tuiDropdownLimitWidth="min"
+      ><app-search-settings (searchSettings)="onSearchSettingsEvent($event)"></app-search-settings>
+    </ng-template>
+
+    <form [formGroup]="searchForm" class="header-search" tuiTextfieldSize="l" tuiAction>
+      <tui-input formControlName="searchInput" [tuiTextfieldCleaner]="true">
+        Type a video name
+        <input tuiTextfield />
+      </tui-input>
+    </form>
+    <button tuiButton shape="rounded" appearance="accent" (click)="searchClick.emit()">
+      Search
+    </button>
+
+    <div class="header-user">
+      <p class="tui-text_body-m-2">Username</p>
+      <tui-avatar src="tuiIconUserLarge"></tui-avatar>
+    </div>
+  </div>
+</section>

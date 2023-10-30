@@ -237,6 +237,8 @@
             "types": "never"
           }
         ],
+        "object-curly-newline": 0,
+        "lines-between-class-members": 0,
         "@typescript-eslint/prefer-includes": 2,
         "@typescript-eslint/no-non-null-assertion": 2,
         "@typescript-eslint/dot-notation": [2, { "allowIndexSignaturePropertyAccess": true }],
@@ -274,7 +276,6 @@
         "@typescript-eslint/switch-exhaustiveness-check": 2,
         "@typescript-eslint/no-confusing-void-expression": 2,
         "@typescript-eslint/no-redundant-type-constituents": 2,
-        "@typescript-eslint/explicit-module-boundary-types": 2,
         "@typescript-eslint/consistent-type-imports": 2,
         "@typescript-eslint/consistent-type-exports": [
           2,
@@ -287,12 +288,6 @@
           2,
           {
             "ignoreStringArrays": true
-          }
-        ],
-        "@typescript-eslint/explicit-function-return-type": [
-          2,
-          {
-            "allowExpressions": true
           }
         ],
         "@typescript-eslint/no-shadow": [
@@ -324,7 +319,16 @@
           2,
           {
             "blankLine": "always",
-            "prev": ["case", "default", "block", "block-like", "multiline-block-like", "interface", "type", "export"],
+            "prev": [
+              "case",
+              "default",
+              "block",
+              "block-like",
+              "multiline-block-like",
+              "interface",
+              "type",
+              "export"
+            ],
             "next": "*"
           },
           {

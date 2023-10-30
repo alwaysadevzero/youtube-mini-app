@@ -1,2 +1,12 @@
-<p>cards-container works!</p>
-<app-card></app-card>
+<section class="cards tui-space_top-5 tui-space_right-5 tui-space_left-5 tui-space_bottom-5">
+  <app-card
+    *ngFor="
+      let item of items
+        | filterVideoByTitlePipe: sortSetting.sortByTitle
+        | sortVideoByDatePipe: sortSetting.sortByDate
+        | sortVideoByViewsPipe: sortSetting.sortByViewCount
+    "
+    [item]="item"
+    class="cards-item"
+  ></app-card>
+</section>

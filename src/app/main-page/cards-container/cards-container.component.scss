@@ -1,0 +1,13 @@
+.cards {
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 60px 20px;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.cards-item {
+  width: 100%;
+}

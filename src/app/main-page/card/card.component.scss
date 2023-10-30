@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-statistic {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+}
+
+.card-statistic-item {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.card-text {
+  margin: 0 !important;
+}
+
+.card-date-color {
+  transform: translateY(3px);
+  height: 12px;
+}
+
+.card-title {
+  text-align: start;
+}
+
+.card-button {
+  max-width: 150px;
+  margin: auto auto 5px;
+}
+
+.card > .color-blue {
+  background-color: var(--tui-support-01);
+}
+
+.card > .color-red {
+  background-color: var(--tui-error-fill);
+}
+
+.card > .color-green {
+  background-color: var(--tui-success-fill);
+}
+
+.card > .color-yellow {
+  background-color: var(--tui-warning-fill);
+}

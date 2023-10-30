@@ -1,1 +1,28 @@
-<p>card works!</p>
+<tui-island class="card" textAlign="center" [hoverable]="true">
+  <img [src]="item.snippet.thumbnails.medium.url" loading="lazy" class="card__img" />
+  <div class="card-statistic">
+    <div class="card-statistic-item">
+      <tui-svg src="tuiIconTv"></tui-svg>
+      <span class="card-text">{{ item.statistics.viewCount }}</span>
+    </div>
+    <div class="card-statistic-item">
+      <tui-svg src="tuiIconThumbsUp"></tui-svg>
+      <span class="card-text">{{ item.statistics.likeCount }}</span>
+    </div>
+    <div class="card-statistic-item">
+      <tui-svg src="tuiIconThumbsDown"></tui-svg>
+      <span class="card-text">{{ item.statistics.dislikeCount }}</span>
+    </div>
+    <div class="card-statistic-item">
+      <tui-svg src="tuiIconMessageSquare"></tui-svg>
+      <span class="card-text">{{ item.statistics.commentCount }}</span>
+    </div>
+  </div>
+  <p class="card-title tui-island__title">{{ item.snippet.title }}</p>
+  <app-button-text>More...</app-button-text>
+  <div
+    appDateToColor
+    [date]="item.snippet.publishedAt"
+    class="card-date-color tui-island__footer-button"
+  ></div>
+</tui-island>

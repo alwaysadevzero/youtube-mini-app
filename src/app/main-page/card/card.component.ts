@@ -1,8 +1,11 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
+import { type Video } from '../models/responce.interface'
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {}
+export class CardComponent {
+  @Input({ required: true }) item!: Video
+}

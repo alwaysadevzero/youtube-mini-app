@@ -1,5 +1,7 @@
+import type { SortSettingType } from '../enums/sort-setting'
+
 export interface SortSetting {
-  sortByDate: 'asc' | 'desc' | null
-  sortByViewCount: 'asc' | 'desc' | null
+  sortByDate: SortSettingType | null
+  sortByViewCount: SortSettingType | null
   sortByTitle: string | null
 }

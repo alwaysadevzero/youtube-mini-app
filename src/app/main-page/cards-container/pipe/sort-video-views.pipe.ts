@@ -1,12 +1,13 @@
 import { Pipe, type PipeTransform } from '@angular/core'
 import type { Video } from '../../models/responce.interface'
+import { SortSettingType } from '../../../shared/enums/sort-setting'
 
 @Pipe({
   name: 'sortVideoByViewsPipe',
 })
 export class SortVideoByViewsPipe implements PipeTransform {
   // eslint-disable-next-line class-methods-use-this
-  transform(value: Video[], sortViewsSetting: 'asc' | 'desc' | null): Video[] {
+  transform(value: Video[], sortViewsSetting: SortSettingType | null): Video[] {
     if (!value || !sortViewsSetting) {
       return value
     }
@@ -15,7 +16,9 @@ export class SortVideoByViewsPipe implements PipeTransform {
       const viewCountA = Number(a.statistics.viewCount)
       const viewCountB = Number(b.statistics.viewCount)
 
-      return sortViewsSetting === 'asc' ? viewCountA - viewCountB : viewCountB - viewCountA
+      return sortViewsSetting === SortSettingType.asc
+        ? viewCountA - viewCountB
+        : viewCountB - viewCountA
     })
   }
 }

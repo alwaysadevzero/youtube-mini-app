@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms'
 import { TuiToggleModule, TuiInputModule } from '@taiga-ui/kit'
 import type { SortSetting } from '../../../../shared/model/sort-setting.interface'
+import { SortSettingType } from '../../../../shared/enums/sort-setting'
 
 @Component({
   selector: 'app-search-settings',
@@ -22,12 +23,15 @@ export class SearchSettingsComponent implements OnInit {
 
   ngOnInit() {
     this.sortForm.valueChanges.subscribe(() => {
-      const sortForm: SortSetting = {
-        sortByDate: this.sortForm.get('sortByDate')?.value ? 'asc' : 'desc',
-        sortByViewCount: this.sortForm.get('sortByViewCount')?.value ? 'asc' : 'desc',
-        sortByTitle: this.sortForm.get('sortByTitle')?.value,
+      const sortForm = this.sortForm.getRawValue()
+
+      const sortSettings: SortSetting = {
+        sortByDate: sortForm.sortByDate ? SortSettingType.asc : SortSettingType.desc,
+        sortByViewCount: sortForm.sortByViewCount ? SortSettingType.asc : SortSettingType.desc,
+        sortByTitle: sortForm.sortByTitle,
       }
-      this.searchSettings.emit(sortForm)
+
+      this.searchSettings.emit(sortSettings)
     })
   }
 }

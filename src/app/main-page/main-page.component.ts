@@ -15,7 +15,7 @@ export class MainPageComponent implements AfterViewInit {
   sortSetting: SortSetting = {
     sortByViewCount: null,
     sortByDate: null,
-    sortByTitle: '',
+    sortByTitle: null,
   }
 
   processSearchClick() {

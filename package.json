@@ -14,7 +14,8 @@
     "stylelint:fix": "npx stylelint ./**/*.scss --fix",
     "format": "prettier --check \"src/**/*.ts\"",
     "format:fix": "prettier --write \"src/**/*.ts\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "refactor": "npm run stylelint:fix && npm run lint:fix && npm run format:fix"
   },
   "private": true,
   "dependencies": {

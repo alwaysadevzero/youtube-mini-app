@@ -1,5 +1,10 @@
 <tui-island class="card" textAlign="center" [hoverable]="true">
-  <img [src]="item.snippet.thumbnails.medium.url" loading="lazy" class="card__img" />
+  <img
+    [src]="item.snippet.thumbnails.medium.url"
+    loading="lazy"
+    class="card__img"
+    [alt]="item.snippet.tags[0] + ' image'"
+  />
   <div class="card-statistic">
     <div class="card-statistic-item">
       <tui-svg src="tuiIconTv"></tui-svg>

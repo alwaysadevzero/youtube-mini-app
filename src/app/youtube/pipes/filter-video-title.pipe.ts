@@ -1,6 +1,6 @@
 import { Pipe, type PipeTransform } from '@angular/core'
-import type { Video } from '../../models/responce.interface'
-import type { SortSetting } from '../../../shared/model/sort-setting.interface'
+import type { Video } from '../models/responce.interface'
+import type { SortSetting } from '../../shared/models/sort-setting.interface'
 
 @Pipe({
   name: 'filterVideoByTitlePipe',

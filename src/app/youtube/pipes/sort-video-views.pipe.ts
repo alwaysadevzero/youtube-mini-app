@@ -1,6 +1,6 @@
 import { Pipe, type PipeTransform } from '@angular/core'
-import type { Video } from '../../models/responce.interface'
-import { SortSettingType } from '../../../shared/enums/sort-setting'
+import type { Video } from '../models/responce.interface'
+import { SortSettingType } from '../../shared/enums/sort-setting'
 
 @Pipe({
   name: 'sortVideoByViewsPipe',

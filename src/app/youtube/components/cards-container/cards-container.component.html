@@ -2,9 +2,9 @@
   <app-card
     *ngFor="
       let item of items
-        | filterVideoByTitlePipe: sortSetting.sortByTitle
-        | sortVideoByDatePipe: sortSetting.sortByDate
-        | sortVideoByViewsPipe: sortSetting.sortByViewCount
+        | filterVideoByTitlePipe: sortSettings.sortByTitle
+        | sortVideoByDatePipe: sortSettings.sortByDate
+        | sortVideoByViewsPipe: sortSettings.sortByViewCount
     "
     [item]="item"
     class="cards-item"

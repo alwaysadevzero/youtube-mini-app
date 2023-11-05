@@ -1,9 +1,10 @@
-import { Component, Output, EventEmitter, type OnInit } from '@angular/core'
+import { Component, inject, type OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms'
 import { TuiToggleModule, TuiInputModule } from '@taiga-ui/kit'
-import type { SortSetting } from '../../../../shared/model/sort-setting.interface'
-import { SortSettingType } from '../../../../shared/enums/sort-setting'
+import type { SortSetting } from '../../../shared/models/sort-setting.interface'
+import { SortSettingType } from '../../../shared/enums/sort-setting'
+import { SearchSettingsService } from '../../../youtube/services/search-settings.service'
 
 @Component({
   selector: 'app-search-settings',
@@ -13,7 +14,7 @@ import { SortSettingType } from '../../../../shared/enums/sort-setting'
   styleUrls: ['./search-settings.component.scss'],
 })
 export class SearchSettingsComponent implements OnInit {
-  @Output() searchSettings = new EventEmitter<SortSetting>()
+  private searchSettings = inject(SearchSettingsService)
 
   sortForm = new FormGroup({
     sortByDate: new FormControl(),
@@ -31,7 +32,7 @@ export class SearchSettingsComponent implements OnInit {
         sortByTitle: sortForm.sortByTitle,
       }
 
-      this.searchSettings.emit(sortSettings)
+      this.searchSettings.onSearchSettingsEvent(sortSettings)
     })
   }
 }

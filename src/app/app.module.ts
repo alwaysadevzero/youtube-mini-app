@@ -6,14 +6,16 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { MainPageModule } from './main-page/main-page.module'
+import { YoutubeModule } from './youtube/youtube.module'
+import { CoreModule } from './core/core.module'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CoreModule,
     BrowserModule,
     AppRoutingModule,
-    MainPageModule,
+    YoutubeModule,
     BrowserAnimationsModule,
     TuiRootModule,
     TuiDialogModule,

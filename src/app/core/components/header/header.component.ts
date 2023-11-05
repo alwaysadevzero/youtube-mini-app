@@ -1,13 +1,13 @@
 import { NgOptimizedImage } from '@angular/common'
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { TuiActiveZoneModule } from '@taiga-ui/cdk'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { TuiInputModule, TuiActionModule } from '@taiga-ui/kit'
 import { TuiTextfieldControllerModule, TuiButtonModule, TuiDropdownModule } from '@taiga-ui/core'
 import { RouterModule } from '@angular/router'
 import { TuiAvatarModule, TuiFallbackSrcModule } from '@taiga-ui/experimental'
-import { SearchSettingsComponent } from './search-settings/search-settings.component'
-import type { SortSetting } from '../../../shared/model/sort-setting.interface'
+import { SearchSettingsService } from '../../../youtube/services/search-settings.service'
+import { SearchSettingsComponent } from '../search-settings/search-settings.component'
 
 @Component({
   selector: 'app-header',
@@ -28,25 +28,22 @@ import type { SortSetting } from '../../../shared/model/sort-setting.interface'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Output() searchClick = new EventEmitter()
+  private searchSettings = inject(SearchSettingsService)
 
-  @Output() settingsClick = new EventEmitter<SortSetting>()
-
-  onSearchSettingsEvent(event: SortSetting) {
-    this.settingsClick.emit(event)
-  }
-
-  open = false
+  isSearchSettingsMenuOpen = false
 
   settingsOnClick(): void {
-    this.open = !this.open
+    this.isSearchSettingsMenuOpen = !this.isSearchSettingsMenuOpen
   }
 
   onActiveZone(active: boolean): void {
-    this.open = active && this.open
+    this.isSearchSettingsMenuOpen = active && this.isSearchSettingsMenuOpen
+  }
+
+  searchClick() {
+    this.searchSettings.onSearchVideosEvent(true)
   }
 
   searchForm = new FormGroup({

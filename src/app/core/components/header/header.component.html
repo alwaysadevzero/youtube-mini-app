@@ -11,12 +11,12 @@
       appearance="secondary-destructive"
       class="header-setting"
       [tuiDropdown]="dropdownContent"
-      [tuiDropdownManual]="open"
+      [tuiDropdownManual]="isSearchSettingsMenuOpen"
       (click)="settingsOnClick()"
       (tuiActiveZoneChange)="onActiveZone($event)"
     ></button>
     <ng-template #dropdownContent tuiDropdownAlign="right" tuiDropdownLimitWidth="min"
-      ><app-search-settings (searchSettings)="onSearchSettingsEvent($event)"></app-search-settings>
+      ><app-search-settings></app-search-settings>
     </ng-template>
 
     <form [formGroup]="searchForm" class="header-search" tuiTextfieldSize="l" tuiAction>
@@ -28,9 +28,7 @@
         Type a video name
         <input tuiTextfield type="search" />
       </tui-input>
-      <button tuiButton shape="rounded" appearance="accent" (click)="searchClick.emit()">
-        Search
-      </button>
+      <button tuiButton shape="rounded" appearance="accent" (click)="searchClick()">Search</button>
     </form>
 
     <div class="header-user">

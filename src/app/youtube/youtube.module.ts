@@ -10,7 +10,7 @@ import { SortVideoByDatePipe } from './pipes/sort-video-date.pipe'
 import { SortVideoByViewsPipe } from './pipes/sort-video-views.pipe'
 import { FilterVideoByTitlePipe } from './pipes/filter-video-title.pipe'
 import { ButtonTextComponent } from '../shared/components/button-text/button-text.component'
-import { SearchSettingsService } from './services/search-settings.service'
+import { YoutubeRoutingModule } from './youtube-routing.module'
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { SearchSettingsService } from './services/search-settings.service'
     FilterVideoByTitlePipe,
   ],
   imports: [
+    YoutubeRoutingModule,
     CommonModule,
     ButtonTextComponent,
     TuiLazyLoadingModule,
@@ -30,6 +31,5 @@ import { SearchSettingsService } from './services/search-settings.service'
     TuiSvgModule,
     TuiButtonModule,
   ],
-  providers: [SearchSettingsService],
 })
 export class YoutubeModule {}

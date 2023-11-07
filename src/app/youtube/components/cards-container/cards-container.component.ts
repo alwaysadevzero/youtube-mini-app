@@ -1,7 +1,7 @@
 import { Component, type OnInit, inject } from '@angular/core'
-import data from '../../response-mock/response.json'
 import type { SortSetting } from '../../../shared/models/sort-setting.model'
 import { SearchSettingsService } from '../../services/search-settings.service'
+import { VideoHttpService } from '../../../core/services/video-http/video-http.service'
 
 @Component({
   selector: 'app-cards-container',
@@ -11,7 +11,9 @@ import { SearchSettingsService } from '../../services/search-settings.service'
 export class CardsContainerComponent implements OnInit {
   private searchSettings = inject(SearchSettingsService)
 
-  items = data.items
+  private youtubeHttp = inject(VideoHttpService)
+
+  items = this.youtubeHttp.videos
 
   sortSettings: SortSetting = {
     sortByDate: null,

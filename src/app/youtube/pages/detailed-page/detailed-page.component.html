@@ -1,0 +1,48 @@
+<section *ngIf="video" class="detail tui-space_top-5">
+  <a class="link-anchor" [routerLink]="['/main']">
+    <button
+      tuiIconButton
+      icon="tuiIconArrowLeftLarge"
+      appearance="accent"
+      class="back-button"
+    ></button>
+  </a>
+  <tui-island class="card" textAlign="left">
+    <img
+      [src]="video.snippet.thumbnails.high.url"
+      loading="lazy"
+      class="card-img"
+      [alt]="video.snippet.tags[0] + ' image'"
+    />
+    <div class="card-content">
+      <div class="card-text-content">
+        <h2 class="card-title tui-island__title">{{ video.snippet.title }}</h2>
+        <span class="tui-text_body-m-2 date">{{
+          video.snippet.publishedAt | date: 'fullDate'
+        }}</span>
+        <p>{{ (video.snippet.description | slice: 0 : 200) + '...' }}</p>
+      </div>
+      <div class="card-content-bottom">
+        <div class="card-statistic">
+          <div class="card-statistic-item">
+            <tui-svg src="tuiIconTv"></tui-svg>
+            <span class="card-text">{{ video.statistics.viewCount }}</span>
+          </div>
+          <div class="card-statistic-item">
+            <tui-svg src="tuiIconThumbsUp"></tui-svg>
+            <span class="card-text">{{ video.statistics.likeCount }}</span>
+          </div>
+          <div class="card-statistic-item">
+            <tui-svg src="tuiIconThumbsDown"></tui-svg>
+            <span class="card-text">{{ video.statistics.dislikeCount }}</span>
+          </div>
+          <div class="card-statistic-item">
+            <tui-svg src="tuiIconMessageSquare"></tui-svg>
+            <span class="card-text">{{ video.statistics.commentCount }}</span>
+          </div>
+        </div>
+        <div appDateToColor [date]="video.snippet.publishedAt" class="card-date"></div>
+      </div>
+    </div>
+  </tui-island>
+</section>

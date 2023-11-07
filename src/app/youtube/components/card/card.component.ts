@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { type Video } from '../../models/responce.model'
+import { type Video } from '../../../shared/models/responce.model'
 
 @Component({
   selector: 'app-card',

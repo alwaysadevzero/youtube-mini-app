@@ -11,6 +11,7 @@ import { SortVideoByViewsPipe } from './pipes/sort-video-views.pipe'
 import { FilterVideoByTitlePipe } from './pipes/filter-video-title.pipe'
 import { ButtonTextComponent } from '../shared/components/button-text/button-text.component'
 import { YoutubeRoutingModule } from './youtube-routing.module'
+import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module'
     SortVideoByDatePipe,
     SortVideoByViewsPipe,
     FilterVideoByTitlePipe,
+    DetailedPageComponent,
   ],
   imports: [
     YoutubeRoutingModule,

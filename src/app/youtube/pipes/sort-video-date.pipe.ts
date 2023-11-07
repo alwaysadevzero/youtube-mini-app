@@ -1,5 +1,5 @@
 import { Pipe, type PipeTransform } from '@angular/core'
-import type { Video } from '../models/responce.model'
+import type { Video } from '../../shared/models/responce.model'
 import { SortSettingType } from '../../shared/enums/sort-setting'
 
 @Pipe({

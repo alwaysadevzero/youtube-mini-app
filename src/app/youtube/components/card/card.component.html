@@ -24,7 +24,7 @@
     </div>
   </div>
   <p class="card-title tui-island__title">{{ item.snippet.title }}</p>
-  <app-button-text>More...</app-button-text>
+  <a [routerLink]="['./detail', item.etag]"><app-button-text>More...</app-button-text></a>
   <div
     appDateToColor
     [date]="item.snippet.publishedAt"

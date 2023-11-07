@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
-import type { SortSetting } from 'src/app/shared/models/sort-setting.interface'
+import type { SortSetting } from 'src/app/shared/models/sort-setting.model'
 
 @Injectable({ providedIn: 'root' })
 export class SearchSettingsService {

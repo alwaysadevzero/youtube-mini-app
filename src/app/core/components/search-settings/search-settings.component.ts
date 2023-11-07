@@ -2,7 +2,7 @@ import { Component, inject, type OnInit } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms'
 import { TuiToggleModule, TuiInputModule } from '@taiga-ui/kit'
-import type { SortSetting } from '../../../shared/models/sort-setting.interface'
+import type { SortSetting } from '../../../shared/models/sort-setting.model'
 import { SortSettingType } from '../../../shared/enums/sort-setting'
 import { SearchSettingsService } from '../../../youtube/services/search-settings.service'
 

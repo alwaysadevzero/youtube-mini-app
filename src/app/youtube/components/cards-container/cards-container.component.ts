@@ -1,6 +1,6 @@
 import { Component, type OnInit, inject } from '@angular/core'
 import data from '../../response-mock/response.json'
-import type { SortSetting } from '../../../shared/models/sort-setting.interface'
+import type { SortSetting } from '../../../shared/models/sort-setting.model'
 import { SearchSettingsService } from '../../services/search-settings.service'
 
 @Component({

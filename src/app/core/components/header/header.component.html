@@ -26,14 +26,19 @@
         [tuiTextfieldCleaner]="true"
       >
         Type a video name
-        <input tuiTextfield type="search" />
+        <input tuiTextfield />
       </tui-input>
       <button tuiButton shape="rounded" appearance="accent" (click)="searchClick()">Search</button>
     </form>
-
     <div class="header-user">
-      <p class="tui-text_body-m-2">Username</p>
-      <tui-avatar src="tuiIconUserLarge"></tui-avatar>
+      <p class="tui-text_body-m-2">{{ userName$ | async }}</p>
+      <div *ngIf="userIsAuthorized$ | async; then authorized; else notAuthorized"></div>
+      <ng-template #authorized>
+        <tui-avatar src="tuiIconLogInLarge" (click)="logout()"></tui-avatar>
+      </ng-template>
+      <ng-template #notAuthorized>
+        <tui-avatar src="tuiIconUserLarge" (click)="login()"></tui-avatar>
+      </ng-template>
     </div>
   </div>
 </header>

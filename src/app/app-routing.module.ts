@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, type Routes } from '@angular/router'
+import { authGuard } from './core/guards/auth/auth.guard'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'main' },
@@ -7,6 +8,7 @@ const routes: Routes = [
     path: 'main',
     title: 'Main',
     loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule),
+    canMatch: [authGuard],
   },
   {
     path: 'login',

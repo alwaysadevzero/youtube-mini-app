@@ -1,0 +1,27 @@
+<section class="sign-in tui-form__row tui-space_bottom-3">
+  <h1>Login</h1>
+  <form [formGroup]="authForm" class="auth-form">
+    <tui-input class="login-input" [tuiTextfieldCleaner]="true" formControlName="login">
+      login<span>*</span>
+    </tui-input>
+    <tui-input-password
+      formControlName="password"
+      [tuiTextfieldCleaner]="true"
+      tuiHintContent="Password must contain at least one lowercase letter, one uppercase letter, one digit and 8 characters long (e.g. aaaaaa1A)"
+      class="login-input password tui-form__row"
+    >
+      Password<span class="required">*</span>
+      <input tuiTextfield placeholder="Make it secure!" />
+    </tui-input-password>
+    <button
+      tuiButton
+      type="button"
+      class="login-input tui-form__row"
+      appearance="accent"
+      [disabled]="authForm.invalid"
+      (click)="submitForm()"
+    >
+      Log in
+    </button>
+  </form>
+</section>

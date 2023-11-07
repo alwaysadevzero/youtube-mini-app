@@ -1,17 +1,19 @@
-import { NgOptimizedImage } from '@angular/common'
+import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { Component, inject } from '@angular/core'
 import { TuiActiveZoneModule } from '@taiga-ui/cdk'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { TuiInputModule, TuiActionModule } from '@taiga-ui/kit'
 import { TuiTextfieldControllerModule, TuiButtonModule, TuiDropdownModule } from '@taiga-ui/core'
-import { RouterModule } from '@angular/router'
+import { Router, RouterModule } from '@angular/router'
 import { TuiAvatarModule, TuiFallbackSrcModule } from '@taiga-ui/experimental'
 import { SearchSettingsService } from '../../../youtube/services/search-settings.service'
 import { SearchSettingsComponent } from '../search-settings/search-settings.component'
+import { AuthService } from '../../services/auth/auth.service'
 
 @Component({
   selector: 'app-header',
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     TuiInputModule,
     TuiTextfieldControllerModule,
@@ -32,6 +34,14 @@ import { SearchSettingsComponent } from '../search-settings/search-settings.comp
 export class HeaderComponent {
   private searchSettings = inject(SearchSettingsService)
 
+  private authService = inject(AuthService)
+
+  private router = inject(Router)
+
+  userName$ = this.authService.userName$
+
+  userIsAuthorized$ = this.authService.userIsAuthorized$
+
   isSearchSettingsMenuOpen = false
 
   settingsOnClick(): void {
@@ -44,6 +54,15 @@ export class HeaderComponent {
 
   searchClick() {
     this.searchSettings.onSearchVideosEvent(true)
+  }
+
+  logout() {
+    this.authService.logout()
+    this.router.navigate(['login'])
+  }
+
+  login() {
+    this.router.navigate(['login'])
   }
 
   searchForm = new FormGroup({

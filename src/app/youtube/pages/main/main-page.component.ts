@@ -1,4 +1,5 @@
-import { Component, type OnInit, inject } from '@angular/core'
+import { Component, type OnInit, inject, DestroyRef } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { SearchSettingsService } from '../../services/search-settings.service'
 
 @Component({
@@ -9,11 +10,15 @@ import { SearchSettingsService } from '../../services/search-settings.service'
 export class MainPageComponent implements OnInit {
   private searchSettings = inject(SearchSettingsService)
 
+  private destroyRef = inject(DestroyRef)
+
   showVideos = false
 
   ngOnInit() {
-    this.searchSettings.searchVideos$.subscribe((searchVideos: boolean) => {
-      this.showVideos = searchVideos
-    })
+    this.searchSettings.searchVideos$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((searchVideos: boolean) => {
+        this.showVideos = searchVideos
+      })
   }
 }

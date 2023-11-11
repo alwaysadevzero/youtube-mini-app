@@ -10,12 +10,7 @@ import { StorageField } from '../../../shared/enums/storage-field'
 export class AuthService {
   private storageService = inject(StorageService)
 
-  private userIsAuthorizedSource = new BehaviorSubject<boolean>(false)
-
-  private userCredentialsSource = new BehaviorSubject<UserCredential>({
-    login: null,
-    password: null,
-  })
+  private userCredentialsSource = new BehaviorSubject<UserCredential | null>(null)
 
   constructor() {
     const credentials = this.storageService.getField<UserCredential>(StorageField.userCredentials)
@@ -25,35 +20,28 @@ export class AuthService {
     }
   }
 
-  public userIsAuthorized$ = this.userIsAuthorizedSource.asObservable()
-
   public userCredentials$ = this.userCredentialsSource.asObservable()
 
-  get userName$(): Observable<string> {
+  get userName$(): Observable<string | null> {
     return this.userCredentials$.pipe(
-      map((credentials: UserCredential) => {
-        if (!credentials.login) {
-          return 'Anonymous'
+      map(credentials => {
+        if (credentials) {
+          return credentials.login
         }
 
-        return credentials.login
+        return 'Anonymous'
       }),
     )
   }
 
   logout(): void {
-    this.userIsAuthorizedSource.next(false)
-    this.userCredentialsSource.next({
-      login: null,
-      password: null,
-    })
+    this.userCredentialsSource.next(null)
 
     this.storageService.removeField(StorageField.userCredentials)
   }
 
   login(credentials: UserCredential): void {
     this.userCredentialsSource.next(credentials)
-    this.userIsAuthorizedSource.next(true)
 
     this.storageService.setField<UserCredential>(StorageField.userCredentials, credentials)
   }

@@ -2,7 +2,7 @@ import { Component, type OnInit, inject } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { take } from 'rxjs/operators'
 import { Location } from '@angular/common'
-import { YoutubeHttpService } from '../../../core/services/video-http/youtube-http.service'
+import { YoutubeHttpService } from '../../services/video-http/youtube-http.service'
 import type { Video } from '../../../shared/models/responce.model'
 
 @Component({

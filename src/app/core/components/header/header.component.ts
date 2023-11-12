@@ -10,7 +10,7 @@ import { debounceTime, filter } from 'rxjs/operators'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { SearchSettingsComponent } from '../search-settings/search-settings.component'
 import { AuthService } from '../../services/auth/auth.service'
-import { YoutubeHttpService } from '../../services/video-http/youtube-http.service'
+import { YoutubeHttpService } from '../../../youtube/services/video-http/youtube-http.service'
 
 @Component({
   selector: 'app-header',

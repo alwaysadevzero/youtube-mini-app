@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angul
 import { TuiToggleModule, TuiInputModule } from '@taiga-ui/kit'
 import type { SortSetting } from '../../../shared/models/sort-setting.model'
 import { SortSettingType } from '../../../shared/enums/sort-setting'
-import { SearchSettingsService } from '../../../youtube/services/search-settings.service'
+import { SearchSettingsService } from '../../../youtube/services/search-settings/search-settings.service'
 
 @Component({
   selector: 'app-search-settings',

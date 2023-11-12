@@ -61,11 +61,10 @@ export class YoutubeHttpService {
 
   private getSearchListById(...id: string[]): Observable<SearchListResponseById> {
     const url = `${this.baseUrl}videos`
-    const ids = id.join(',')
     const params = new HttpParams({
       fromObject: {
         part: 'snippet,statistics',
-        id: ids,
+        id,
       },
     })
 

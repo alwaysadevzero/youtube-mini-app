@@ -1,8 +1,8 @@
 import { Component, type OnInit, inject, DestroyRef } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import type { SortSetting } from '../../../shared/models/sort-setting.model'
-import { SearchSettingsService } from '../../services/search-settings.service'
-import { YoutubeHttpService } from '../../../core/services/video-http/youtube-http.service'
+import { SearchSettingsService } from '../../services/search-settings/search-settings.service'
+import { YoutubeHttpService } from '../../services/video-http/youtube-http.service'
 import type { Video } from '../../../shared/models/responce.model'
 
 @Component({

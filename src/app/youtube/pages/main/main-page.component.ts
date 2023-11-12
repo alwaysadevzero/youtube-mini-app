@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core'
-import { SearchSettingsService } from '../../services/search-settings.service'
+import { SearchSettingsService } from '../../services/search-settings/search-settings.service'
 
 @Component({
   selector: 'app-main-page',

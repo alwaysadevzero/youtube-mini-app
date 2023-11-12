@@ -22,6 +22,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
+            "allowedCommonJsDependencies": ["dompurify", "text-mask-core"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -32,6 +33,11 @@
                 "glob": "**/*",
                 "input": "node_modules/@taiga-ui/icons/src",
                 "output": "assets/taiga-ui/icons"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -111,10 +117,11 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
+          "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "baseHref": "https://rolling-scopes-school.github.io/alwaysadevzero-ANGULAR2023Q4/",
-            "message": "Auto generated"
+            "outputPath": "dist/intro",
+            "netlifyToken": "nfp_FdJXW8dbvnKvJ7hgTtoUPqHuz7N5xGbo73ac",
+            "siteId": "8b559ff5-f320-4376-816f-dc743d3e686f"
           }
         }
       }

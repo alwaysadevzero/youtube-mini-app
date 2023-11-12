@@ -1,3 +1,7 @@
+export interface SearchListResponseById extends Omit<SearchListResponse, 'items'> {
+  items: Video[]
+}
+
 export interface SearchListResponse {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   TODO: string
@@ -8,18 +12,6 @@ export interface SearchListResponse {
     resultsPerPage: number
   }
   items: ResponseVideo[]
-}
-
-export interface SearchListResponseById {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  TODO: string
-  kind: string
-  etag: string
-  pageInfo: {
-    totalResults: number
-    resultsPerPage: number
-  }
-  items: Video[]
 }
 
 interface ResponseVideo extends Omit<Video, 'statistics' | 'id'> {

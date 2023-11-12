@@ -3,7 +3,7 @@
     [src]="item.snippet.thumbnails.medium.url"
     loading="lazy"
     class="card__img"
-    [alt]="item.snippet.tags[0] + ' image'"
+    [alt]="item + ' image'"
   />
   <div class="card-statistic">
     <div class="card-statistic-item">
@@ -24,7 +24,7 @@
     </div>
   </div>
   <p class="card-title tui-island__title">{{ item.snippet.title }}</p>
-  <a [routerLink]="['./detail', item.etag]"><app-button-text>More...</app-button-text></a>
+  <a [routerLink]="['./detail', item.id]"><app-button-text>More...</app-button-text></a>
   <div
     appDateToColor
     [date]="item.snippet.publishedAt"

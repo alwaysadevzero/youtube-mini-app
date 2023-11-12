@@ -6,7 +6,7 @@ import { authGuard } from '../core/guards/auth/auth.guard'
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'detail/:etag', component: DetailedPageComponent, canMatch: [authGuard] },
+  { path: 'detail/:id', component: DetailedPageComponent, canMatch: [authGuard] },
 ]
 
 @NgModule({

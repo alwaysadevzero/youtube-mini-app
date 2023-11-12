@@ -1,5 +1,5 @@
 <section *ngIf="video" class="detail tui-space_top-5">
-  <a class="link-anchor" [routerLink]="['/main']">
+  <a class="link-anchor" (click)="goBack()">
     <button
       tuiIconButton
       icon="tuiIconArrowLeftLarge"
@@ -10,9 +10,8 @@
   <tui-island class="card" textAlign="left">
     <img
       [src]="video.snippet.thumbnails.high.url"
-      loading="lazy"
       class="card-img"
-      [alt]="video.snippet.tags[0] + ' image'"
+      [alt]="video.snippet.tags + ' image'"
     />
     <div class="card-content">
       <div class="card-text-content">

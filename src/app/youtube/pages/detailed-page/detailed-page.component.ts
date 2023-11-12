@@ -1,6 +1,8 @@
 import { Component, type OnInit, inject } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { VideoHttpService } from '../../../core/services/video-http/video-http.service'
+import { take } from 'rxjs/operators'
+import { Location } from '@angular/common'
+import { YoutubeHttpService } from '../../../core/services/video-http/youtube-http.service'
 import type { Video } from '../../../shared/models/responce.model'
 
 @Component({
@@ -9,25 +11,40 @@ import type { Video } from '../../../shared/models/responce.model'
   styleUrls: ['./detailed-page.component.scss'],
 })
 export class DetailedPageComponent implements OnInit {
-  private videoEtag: string | null = null
+  private videoId: string | null = null
 
-  private videoHttpService = inject(VideoHttpService)
+  private youtubeHttpService = inject(YoutubeHttpService)
 
   private route = inject(ActivatedRoute)
 
   private router = inject(Router)
 
+  private location = inject(Location)
+
   video: Video | undefined = undefined
 
   ngOnInit(): void {
-    this.videoEtag = this.route.snapshot.paramMap.get('etag')
+    this.videoId = this.route.snapshot.paramMap.get('id')
 
-    if (this.videoEtag) {
-      this.video = this.videoHttpService.getVideoByEtag(this.videoEtag)
-    }
-
-    if (!this.video) {
+    if (!this.videoId) {
       this.router.navigate(['404'])
+
+      return
     }
+
+    this.youtubeHttpService
+      .getVideoById(this.videoId)
+      .pipe(take(1))
+      .subscribe(video => {
+        if (video) {
+          this.video = video
+        } else {
+          this.router.navigate(['404'])
+        }
+      })
+  }
+
+  goBack(): void {
+    this.location.back()
   }
 }

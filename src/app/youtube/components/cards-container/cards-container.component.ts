@@ -2,7 +2,8 @@ import { Component, type OnInit, inject, DestroyRef } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import type { SortSetting } from '../../../shared/models/sort-setting.model'
 import { SearchSettingsService } from '../../services/search-settings.service'
-import { VideoHttpService } from '../../../core/services/video-http/video-http.service'
+import { YoutubeHttpService } from '../../../core/services/video-http/youtube-http.service'
+import type { Video } from '../../../shared/models/responce.model'
 
 @Component({
   selector: 'app-cards-container',
@@ -14,9 +15,9 @@ export class CardsContainerComponent implements OnInit {
 
   private destroyRef = inject(DestroyRef)
 
-  private youtubeHttp = inject(VideoHttpService)
+  private youtubeHttp = inject(YoutubeHttpService)
 
-  items = this.youtubeHttp.videos
+  items: Video[] = []
 
   sortSettings: SortSetting = {
     sortByDate: null,
@@ -30,5 +31,9 @@ export class CardsContainerComponent implements OnInit {
       .subscribe((searchSettings: SortSetting) => {
         this.sortSettings = searchSettings
       })
+
+    this.youtubeHttp.videos$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(videos => {
+      this.items = videos
+    })
   }
 }

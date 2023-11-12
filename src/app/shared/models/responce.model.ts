@@ -1,4 +1,16 @@
-export interface VideoResponse {
+export interface SearchListResponse {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  TODO: string
+  kind: string
+  etag: string
+  pageInfo: {
+    totalResults: number
+    resultsPerPage: number
+  }
+  items: ResponseVideo[]
+}
+
+export interface SearchListResponseById {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   TODO: string
   kind: string
@@ -8,6 +20,13 @@ export interface VideoResponse {
     resultsPerPage: number
   }
   items: Video[]
+}
+
+interface ResponseVideo extends Omit<Video, 'statistics' | 'id'> {
+  id: {
+    kind: 'youtube#video'
+    videoId: string
+  }
 }
 
 export interface Video {

@@ -10,7 +10,7 @@ import { debounceTime, filter } from 'rxjs/operators'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { SearchSettingsComponent } from '../search-settings/search-settings.component'
 import { AuthService } from '../../services/auth/auth.service'
-import { YoutubeHttpService } from '../../../youtube/services/video-http/youtube-http.service'
+import { SearchService } from '../../services/search/search.service'
 
 @Component({
   selector: 'app-header',
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
 
   private destroyRef = inject(DestroyRef)
 
-  private youtubeHttp = inject(YoutubeHttpService)
+  private search = inject(SearchService)
 
   private router = inject(Router)
 
@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
         debounceTime(500),
       )
       .subscribe(value => {
-        this.youtubeHttp.searchVideos(value)
+        this.search.search(value)
       })
   }
 

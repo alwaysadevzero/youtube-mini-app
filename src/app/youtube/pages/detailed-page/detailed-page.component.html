@@ -1,4 +1,4 @@
-<section *ngIf="video" class="detail tui-space_top-5">
+<section *ngIf="video$ | async as video" class="detail tui-space_top-5">
   <a class="link-anchor" (click)="goBack()">
     <button
       tuiIconButton

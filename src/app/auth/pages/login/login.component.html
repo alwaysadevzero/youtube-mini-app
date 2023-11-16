@@ -4,6 +4,8 @@
     <tui-input class="login-input" [tuiTextfieldCleaner]="true" formControlName="login">
       login<span>*</span>
     </tui-input>
+    <tui-error [formControl]="authForm.controls.login" [error]="[] | tuiFieldError | async">
+    </tui-error>
     <tui-input-password
       formControlName="password"
       [tuiTextfieldCleaner]="true"
@@ -13,6 +15,8 @@
       Password<span class="required">*</span>
       <input tuiTextfield placeholder="Make it secure!" />
     </tui-input-password>
+    <tui-error [formControl]="authForm.controls.password" [error]="[] | tuiFieldError | async">
+    </tui-error>
     <button
       tuiButton
       type="button"

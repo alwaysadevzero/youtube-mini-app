@@ -23,6 +23,12 @@ const routes: Routes = [
         component => component.NotFoundComponent,
       ),
   },
+  {
+    path: 'admin',
+    title: 'admin',
+    loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent),
+    canLoad: [authGuard],
+  },
   { path: '**', redirectTo: '404' },
 ]
 

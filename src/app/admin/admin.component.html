@@ -1,0 +1,92 @@
+<tui-island class="island">
+  <form [formGroup]="cardForm">
+    <h2 class="tui-form__header">Create new card</h2>
+    <tui-input [formControl]="cardForm.controls.titleControl" [tuiTextfieldCleaner]="true">
+      title*
+      <input tuiTextfield />
+    </tui-input>
+    <tui-error
+      class="error"
+      [formControl]="cardForm.controls.titleControl"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <tui-input
+      [formControl]="cardForm.controls.descriptionControl"
+      [tuiTextfieldCleaner]="true"
+      class="tui-space_top-5"
+    >
+      description
+      <input tuiTextfield />
+    </tui-input>
+    <tui-error
+      class="error"
+      [formControl]="cardForm.controls.descriptionControl"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <tui-input
+      [formControl]="cardForm.controls.imgLinkControl"
+      [tuiTextfieldCleaner]="true"
+      class="tui-space_top-5"
+    >
+      img*
+      <input tuiTextfield />
+    </tui-input>
+    <tui-error
+      class="error"
+      [formControl]="cardForm.controls.imgLinkControl"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <tui-input
+      [formControl]="cardForm.controls.videoLinkControl"
+      [tuiTextfieldCleaner]="true"
+      class="tui-space_top-5"
+    >
+      link video*
+      <input tuiTextfield />
+    </tui-input>
+    <tui-error
+      class="error"
+      [formControl]="cardForm.controls.videoLinkControl"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <tui-input-date
+      class="tui-space_top-5"
+      [formControl]="cardForm.controls.dateControl"
+      [max]="maxDate"
+      [min]="minDate"
+    >
+      date*
+    </tui-input-date>
+
+    <tui-input-tag
+      class="tags tui-space_top-5"
+      [formControl]="cardForm.controls.tagsControl"
+      [tuiTextfieldLabelOutside]="true"
+      [maxLength]="20"
+      [inputHidden]="tagsInputHidden"
+    >
+      tags
+    </tui-input-tag>
+    <div class="tui-form__buttons">
+      <button
+        appearance="accent"
+        size="l"
+        tuiButton
+        type="submit"
+        class="tui-form__button"
+        [disabled]="cardForm.invalid"
+      >
+        Submit
+      </button>
+      <button
+        appearance="secondary-destructive"
+        size="l"
+        tuiButton
+        type="reset"
+        class="tui-form__button"
+      >
+        reset
+      </button>
+    </div>
+  </form>
+</tui-island>

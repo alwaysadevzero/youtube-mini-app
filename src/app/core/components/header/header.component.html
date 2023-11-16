@@ -18,7 +18,6 @@
     <ng-template #dropdownContent tuiDropdownAlign="right" tuiDropdownLimitWidth="min"
       ><app-search-settings></app-search-settings>
     </ng-template>
-
     <form [formGroup]="searchForm" class="header-search" tuiTextfieldSize="l" tuiAction>
       <tui-input
         formControlName="searchInput"
@@ -31,8 +30,8 @@
     </form>
     <div class="header-user">
       <p class="tui-text_body-m-2">{{ userName$ | async }}</p>
-      <div *ngIf="userCredentials$ | async; then authorized; else notAuthorized"></div>
       <ng-template #authorized>
+        <a tuiButton appearance="accent" shape="square" size="l" [routerLink]="['/admin']">Admin</a>
         <button
           tuiIconButton
           icon="tuiIconLogInLarge"
@@ -41,6 +40,7 @@
           (click)="logout()"
         ></button>
       </ng-template>
+      <div *ngIf="userCredentials$ | async; then authorized; else notAuthorized"></div>
       <ng-template #notAuthorized>
         <button
           tuiIconButton

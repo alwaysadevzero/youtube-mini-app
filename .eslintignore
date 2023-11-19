@@ -1,0 +1,12 @@
+*.js
+*.md
+dist
+build
+*.svg
+*.html
+*.scss
+*.json
+node_modules
+documentation
+src/env.d.ts
+./.env

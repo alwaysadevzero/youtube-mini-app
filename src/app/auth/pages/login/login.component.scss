@@ -1,0 +1,24 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 80vh;
+  padding-inline: 1rem;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-input {
+  width: 100%;
+}
+
+.notification {
+  margin-bottom: 0;
+}

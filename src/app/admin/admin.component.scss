@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(80vh - 50px);
+  margin: 50px;
+}
+
+.island {
+  width: 50%;
+  min-width: 280px;
+  max-width: 500px;
+  background-color: var(--tui-base-02);
+}
+
+.error {
+  position: absolute;
+  transform: translateY(-5px);
+}
+
+.tags {
+  width: 100%;
+}
+
+.tag {
+  background-color: var(--tui-base-02);
+}

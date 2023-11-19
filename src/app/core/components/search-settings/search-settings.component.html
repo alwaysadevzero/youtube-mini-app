@@ -1,0 +1,24 @@
+<div class="search-settings">
+  <form [formGroup]="sortForm" class="tui-space_right-5 tui-space_left-5">
+    <h3 class="tui-form__header tui-form__header_margin-top_nonetui-text_h6">Sorting by</h3>
+    <div class="search-settings-container">
+      <div class="search-settings-item">
+        <span class="tui-text_body-m search-settings-text">Date:</span>
+        <tui-toggle formControlName="sortByDate"></tui-toggle>
+      </div>
+      <div class="search-settings-item">
+        <span class="tui-text_body-m search-settings-text">View Counts:</span>
+        <tui-toggle formControlName="sortByViewCount"></tui-toggle>
+      </div>
+      <tui-input
+        class="search-settings-input"
+        formControlName="sortByTitle"
+        size="s"
+        maxlength="30"
+      >
+        Type a something
+        <input tuiTextfield />
+      </tui-input>
+    </div>
+  </form>
+</div>
